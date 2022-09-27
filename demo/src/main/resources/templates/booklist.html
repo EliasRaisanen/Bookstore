@@ -17,6 +17,7 @@
 	<th>Published</th>
 	<th>Price</th>
 	<th>Title</th>
+	<th>Category</th>
 	</tr>
 		<tr th:each = "Book : ${books}" >
 			<td th:text= "${Book.author}"></td>
@@ -24,6 +25,7 @@
 			<td th:text= "${Book.published}"></td>
 			<td th:text= "${Book.price}"></td>
 			<td th:text= "${Book.title}"></td>
+			<td th:text="${Book.category.name}"></td>
 				<td><a th:href="@{/delete/{id}(id=${Book.id})}">Delete</a></td>
 				<td><a th:href="@{/edit/{id}(id=${Book.id})}">Edit</a></td>
 		
