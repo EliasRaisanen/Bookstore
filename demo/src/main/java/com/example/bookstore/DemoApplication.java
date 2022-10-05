@@ -12,6 +12,8 @@ import com.example.bookstore.domain.Bookstore;
 import com.example.bookstore.domain.BookstoreRepository;
 import com.example.bookstore.domain.Category;
 import com.example.bookstore.domain.CategoryRepository;
+import com.example.bookstore.domain.User;
+import com.example.bookstore.domain.UserRepository;
 
 
 @SpringBootApplication
@@ -23,7 +25,7 @@ public class DemoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookstoreRepository repository, CategoryRepository crepository) {
+	public CommandLineRunner demo(BookstoreRepository repository, CategoryRepository crepository, UserRepository urepository) {
 	return (args) -> {
 		
 		log.info("save categories");
@@ -35,7 +37,10 @@ public class DemoApplication {
 		crepository.save(new Category("Comedy"));
 		
 		
-		
+		User user1 = new User("user", "$2a$12$ltduSjP6fIBr9fD1J4/RFOb58z/ZSnGoo2JxrPjpRADsHQ/4T6Yoq\n", "j@ggg.com", "USER");
+		User user2 = new User("admin", "$2a$12$yBVg9zTtD6bPwQIx7iXtAOy8G2ACM1F/i2rRx6nKnbVvJ.Gh2QibK", "h@ggg.com", "ADMIN");
+		urepository.save(user1);
+		urepository.save(user2);
 		
 		repository.save(new Bookstore("NallePuh", "Taavi", "jjj", "2000", "10", crepository.findByName("Horror").get(0)));
 		repository.save(new Bookstore("Tiikeri", "Taavi", "hhh", "2012", "100", crepository.findByName("Fantasy").get(0)));
