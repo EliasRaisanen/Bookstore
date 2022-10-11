@@ -3,7 +3,7 @@ package com.example.bookstore.domain;
 import javax.persistence.*;
 
 @Entity
-
+@Table(name = "UserTable")
 
 public class User {
 

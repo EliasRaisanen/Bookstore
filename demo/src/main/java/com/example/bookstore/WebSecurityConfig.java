@@ -43,29 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.permitAll();
 		
 	}
-	@Bean
-	@Override
-	public UserDetailsService userDetailsService() {
-		List<UserDetails> users = new ArrayList();
-		
-		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		UserDetails user = User
-				.withUsername("user")
-				.password(passwordEncoder.encode("user"))
-				.roles("USER")
-				.build();
-		
-		users.add(user);
-		
-		user = User
-				
-				.withUsername("admin")
-				.password(passwordEncoder.encode("admin"))
-				.roles("USER", "ADMIN")
-				.build();
-		users.add(user);
-		return new InMemoryUserDetailsManager(users);
-	}
+	
 		@Autowired
 		public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 				auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
